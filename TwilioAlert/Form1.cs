@@ -13,6 +13,12 @@ using Twilio;
 
 namespace TwilioAlert
 {
+    
+   private string _ssid = "";
+   private string _auth = "";
+   private string _toNumber  = "+10000000000";
+   private string _fromNumber = "+10000000000";
+   
     public partial class Form1 : Form
     {
         public Form1()
@@ -43,12 +49,12 @@ namespace TwilioAlert
         private void SendMsg(string text)
         {
             // Find your Account Sid and Auth Token at twilio.com/user/account
-            string AccountSid = "ACb66c246f17d9a88fc14d1cc79b3089e9";
-            string AuthToken = "d7bf12aa7c41b88679eede0eb7402410";
+            string AccountSid = _ssid;
+            string AuthToken = _auth;
             var twilio = new TwilioRestClient(AccountSid, AuthToken);
 
             var message = twilio.SendMessage(
-                "+16475572157", "+14162721382",
+                _fromNumber, _toNumber,
                 text
             );
         }
